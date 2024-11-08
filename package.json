@@ -1,0 +1,28 @@
+{
+  "name": "wikigame",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "postinstall": "concurrently -g -n \"WEBSCRAPER,WEB,API\" -c \"#3b1bab,#46b7c3,#60b455\" \"cd Packages/WebScraper && bun i\" \"cd Packages/Web && bun i\" \"cd Packages/API && bun i\"",
+    "clean": "rimraf Packages/*/node_modules node_modules",
+    "lint": "eslint . --fix --cache",
+    "precommit": "concurrently -g -n \"ESLINT\" -c \"#3b1bab\" \"bun run lint\" "
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-tsdoc": "^0.3.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.0",
+    "husky": "^9.1.6",
+    "rimraf": "^6.0.1"
+  }
+}
