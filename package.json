@@ -8,7 +8,10 @@
     "postinstall": "concurrently -g -n \"WEBSCRAPER,WEB,API\" -c \"#3b1bab,#46b7c3,#60b455\" \"cd Packages/WebScraper && bun i\" \"cd Packages/Web && bun i\" \"cd Packages/API && bun i\"",
     "clean": "rimraf Packages/*/node_modules node_modules",
     "lint": "eslint . --fix --cache",
-    "precommit": "concurrently -g -n \"ESLINT\" -c \"#3b1bab\" \"bun run lint\" "
+    "precommit": "concurrently -g -n \"ESLINT\" -c \"#3b1bab\" \"bun run lint\" ",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "pull": "cd Packages/WebScraper && bun run index.ts"
+
   },
   "devDependencies": {
     "@types/bun": "latest",

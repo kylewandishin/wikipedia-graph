@@ -46,4 +46,8 @@ export default class BrowserHandle {
   public async click(selector: string): Promise<void> {
     await this.#page.click(selector);
   }
+
+  public async fill(selector: string, value: string): Promise<void> {
+    await this.#page.fill(selector, value);
+  }
 }
