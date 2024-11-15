@@ -50,4 +50,8 @@ export default class BrowserHandle {
   public async fill(selector: string, value: string): Promise<void> {
     await this.#page.fill(selector, value);
   }
+
+  // public async getUrl(): Promise<string> {
+  //   return
+  // }
 }

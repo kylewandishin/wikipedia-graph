@@ -1,8 +1,12 @@
 import BrowserHandle from './Utils/BrowserHandle';
+import { CheerioParser } from './Utils/CheerioParser';
+import WikipediaHandle from './Utils/wikipediaHandle';
 
 void (async () => {
   const browser = await BrowserHandle.init();
-  await browser.navigate('https://google.com');
+  const htmlParser = new CheerioParser();
+  const wiki = new WikipediaHandle(browser, htmlParser);
+  await wiki.runAll();
   // await browser.navigate('https://google.com');
   // await browser.fill('#APjFqb', 'apple');
   // await browser.click(

@@ -26,6 +26,8 @@ export class CheerioParser {
     const newFrame = this.find(selector);
     if (newFrame) {
       this.#$ = cheerio.load(newFrame);
+    } else {
+      console.error('selector not found');
     }
   }
 
