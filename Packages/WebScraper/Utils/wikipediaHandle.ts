@@ -15,7 +15,7 @@ export default class WikipediaHandle {
     await this.#browser.navigate(`${this.#baseUrl}/wiki/Special:Random`);
   }
 
-  async #processArticle() {
+  async #processArticle(count = 1) {
     const textSelector = '.mw-body-content > .mw-content-ltr ';
     //   '#mw-content-text > div.mw-content-ltr.mw-parser-output > p:nth-child(3)';
     await this.#browser.waitForSelector(textSelector);
@@ -27,7 +27,11 @@ export default class WikipediaHandle {
     //count = 0;
     await this.#browser.navigate(`${this.#baseUrl}${link}`);
     if (link !== '/wiki/Philosophy') {
-      await this.#processArticle();
+      count++;
+      await this.#processArticle(count);
+    } else {
+      console.log(`Reached the Philosophy page after ${count} clicks!`);
+      await this.#browser.kill();
     }
   }
 
