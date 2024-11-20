@@ -24,7 +24,11 @@ export default class WikipediaHandle {
 
     const subSelector = 'p > a';
     const link = this.#parser.attr(subSelector, 'href');
+    //count = 0;
     await this.#browser.navigate(`${this.#baseUrl}${link}`);
+    if (link !== '/wiki/Philosophy') {
+      await this.#processArticle();
+    }
   }
 
   public async runAll() {
